@@ -40,6 +40,7 @@ import { Reason } from './reason';
 
 import { InvestigationGuideView } from './investigation_guide_view';
 import { HostRisk } from '../../../overview/containers/overview_risky_host_links/use_hosts_risk_score';
+import { OverviewCards } from './overview_cards';
 
 type EventViewTab = EuiTabbedContentTab;
 
@@ -152,6 +153,14 @@ const EventDetailsComponent: React.FC<Props> = ({
             name: i18n.OVERVIEW,
             content: (
               <>
+                <EuiSpacer size="m" />
+                <OverviewCards
+                  browserFields={browserFields}
+                  contextId={timelineId}
+                  data={data}
+                  eventId={id}
+                  timelineId={timelineId}
+                />
                 <Reason eventId={id} data={data} />
                 <AlertSummaryView
                   {...{
