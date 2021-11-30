@@ -551,11 +551,6 @@ module.exports = {
                 from: ['plugins/**/*', 'src/plugins/**/*'],
                 errorMessage: 'The core cannot depend on any plugins.',
               },
-              {
-                target: ['(src|x-pack)/plugins/*/public/**/*'],
-                from: ['ui/**/*'],
-                errorMessage: 'Plugins cannot import legacy UI code.',
-              },
             ],
           },
         ],
