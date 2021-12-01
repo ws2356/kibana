@@ -6,6 +6,7 @@
  */
 
 import {
+  EuiHorizontalRule,
   EuiTabbedContent,
   EuiTabbedContentTab,
   EuiSpacer,
@@ -164,7 +165,9 @@ const EventDetailsComponent: React.FC<Props> = ({
                   indexName={indexName}
                   timelineId={timelineId}
                 />
+                <EuiSpacer size="l" />
                 <Reason eventId={id} data={data} />
+                <EuiHorizontalRule />
                 <AlertSummaryView
                   {...{
                     data,
