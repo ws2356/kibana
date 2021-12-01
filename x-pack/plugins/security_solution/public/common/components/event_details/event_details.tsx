@@ -68,6 +68,7 @@ interface Props {
   timelineTabType: TimelineTabs | 'flyout';
   timelineId: string;
   hostRisk: HostRisk | null;
+  handleOnEventClosed: () => void;
 }
 
 export const Indent = styled.div`
@@ -115,6 +116,7 @@ const EventDetailsComponent: React.FC<Props> = ({
   timelineId,
   timelineTabType,
   hostRisk,
+  handleOnEventClosed,
 }) => {
   const [selectedTabId, setSelectedTabId] = useState<EventViewId>(EventsViewType.summaryView);
   const handleTabClick = useCallback(
@@ -165,6 +167,7 @@ const EventDetailsComponent: React.FC<Props> = ({
                   eventId={id}
                   indexName={indexName}
                   timelineId={timelineId}
+                  handleOnEventClosed={handleOnEventClosed}
                 />
                 <EuiSpacer size="l" />
                 <Reason eventId={id} data={data} />
@@ -217,6 +220,7 @@ const EventDetailsComponent: React.FC<Props> = ({
       isEnrichmentsLoading,
       hostRisk,
       goToTableTab,
+      handleOnEventClosed,
     ]
   );
 

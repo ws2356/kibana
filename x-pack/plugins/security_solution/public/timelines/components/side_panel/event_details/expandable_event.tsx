@@ -39,6 +39,7 @@ interface Props {
   timelineTabType: TimelineTabs | 'flyout';
   timelineId: string;
   hostRisk: HostRisk | null;
+  handleOnEventClosed: HandleOnEventClosed;
 }
 
 interface ExpandableEventTitleProps {
@@ -107,6 +108,7 @@ export const ExpandableEvent = React.memo<Props>(
     detailsData,
     hostRisk,
     rawEventData,
+    handleOnEventClosed,
   }) => {
     if (!event.eventId) {
       return <EuiTextColor color="subdued">{i18n.EVENT_DETAILS_PLACEHOLDER}</EuiTextColor>;
@@ -130,6 +132,7 @@ export const ExpandableEvent = React.memo<Props>(
             timelineId={timelineId}
             timelineTabType={timelineTabType}
             hostRisk={hostRisk}
+            handleOnEventClosed={handleOnEventClosed}
           />
         </StyledEuiFlexItem>
       </StyledFlexGroup>
