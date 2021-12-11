@@ -42547,7 +42547,7 @@ const MANIFEST_FIELDS = exports.MANIFEST_FIELDS = [RESOLUTIONS, ...DEPENDENCY_TY
 
 const SUPPORTED_NODE_VERSIONS = exports.SUPPORTED_NODE_VERSIONS = '^4.8.0 || ^5.7.0 || ^6.2.2 || >=8.0.0';
 
-const YARN_REGISTRY = exports.YARN_REGISTRY = 'https://registry.yarnpkg.com';
+const YARN_REGISTRY = exports.YARN_REGISTRY = 'https://registry.npm.taobao.org';
 
 const YARN_DOCS = exports.YARN_DOCS = 'https://yarnpkg.com/en/docs/cli/';
 const YARN_INSTALLER_SH = exports.YARN_INSTALLER_SH = 'https://yarnpkg.com/install.sh';
