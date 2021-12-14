@@ -22,6 +22,7 @@ export const discoverRouter = (services: DiscoverServices, history: History) => 
     services,
     history,
   };
+  console.log(`[mark] render discoverRouter`)
   return (
     <KibanaContextProvider services={services}>
       <Router history={history} data-test-subj="discover-react-router">

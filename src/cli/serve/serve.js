@@ -36,9 +36,11 @@ const getBootstrapScript = (isDev) => {
     // need dynamic require to exclude it from production build
     // eslint-disable-next-line import/no-dynamic-require
     const { bootstrapDevMode } = require(DEV_MODE_PATH);
+    console.log('[mark]: bootstrapDevMode');
     return bootstrapDevMode;
   } else {
     const { bootstrap } = require('../../core/server');
+    console.log('[mark]: bootstrap');
     return bootstrap;
   }
 };

@@ -220,6 +220,7 @@ export class DiscoverPlugin
     core: CoreSetup<DiscoverStartPlugins, DiscoverStart>,
     plugins: DiscoverSetupPlugins
   ): DiscoverSetup {
+    console.log('[mark] discover setup')
     const baseUrl = core.http.basePath.prepend('/app/discover');
 
     if (plugins.share) {
@@ -404,6 +405,7 @@ export class DiscoverPlugin
     // initializeServices are assigned at start and used
     // when the application/embeddable is mounted
 
+    console.log('[mark] discover start')
     const { uiActions } = plugins;
 
     const viewSavedSearchAction = new ViewSavedSearchAction(core.application);
