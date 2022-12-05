@@ -40,6 +40,7 @@ export function SingleDocRoute(props: SingleDocRouteProps) {
   const query = useQuery();
   const docId = query.get('id') || '';
 
+  console.log(`[mark] SingleDocRoute ${[indexPatternId, index, query, docId]}`);
   useEffect(() => {
     chrome.setBreadcrumbs([
       ...getRootBreadcrumbs(),

@@ -264,22 +264,25 @@ export class DiscoverPlugin
         defaultMessage: 'JSON',
       }),
       order: 20,
-      component: ({ hit, indexPattern }) => (
-        <React.Suspense
-          fallback={
-            <DeferredSpinner>
-              <EuiLoadingContent />
-            </DeferredSpinner>
-          }
-        >
-          <SourceViewer
-            index={hit._index}
-            id={hit._id}
-            indexPattern={indexPattern}
-            hasLineNumbers
-          />
-        </React.Suspense>
-      ),
+      component: ({ hit, indexPattern }) => {
+        console.log(`[mark] hit: ${hit}, indexPattern: ${indexPattern}`);
+        return (
+          <React.Suspense
+            fallback={
+              <DeferredSpinner>
+                <EuiLoadingContent />
+              </DeferredSpinner>
+            }
+          >
+            <SourceViewer
+              index={hit._index}
+              id={hit._id}
+              indexPattern={indexPattern}
+              hasLineNumbers
+            />
+          </React.Suspense>
+        );
+      },
     });
 
     const {
@@ -333,7 +336,7 @@ export class DiscoverPlugin
 
     core.application.register({
       id: 'discover',
-      title: 'Discover',
+      title: 'Discover123',
       updater$: this.appStateUpdater.asObservable(),
       order: 1000,
       euiIconType: 'logoKibana',
@@ -364,6 +367,7 @@ export class DiscoverPlugin
     });
 
     plugins.urlForwarding.forwardApp('doc', 'discover', (path) => {
+      console.log(`[mark] forwardApp doc: discover ${path} -> #${path}`)
       return `#${path}`;
     });
     plugins.urlForwarding.forwardApp('context', 'discover', (path) => {
@@ -373,15 +377,19 @@ export class DiscoverPlugin
       if (urlParts[4]) {
         // remove _type part
         const newPath = [...urlParts.slice(0, 3), ...urlParts.slice(4)].join('/');
+        console.log(`[mark] forwardApp context: discover ${path} -> #${newPath}`)
         return `#${newPath}`;
       }
+      console.log(`[mark] forwardApp context: discover ${path} -> #${path}`)
       return `#${path}`;
     });
     plugins.urlForwarding.forwardApp('discover', 'discover', (path) => {
       const [, id, tail] = /discover\/([^\?]+)(.*)/.exec(path) || [];
       if (!id) {
+        console.log(`[mark] forwardApp discover: discover ${path} -> #${path.replace('/discover', '') || '/'}`)
         return `#${path.replace('/discover', '') || '/'}`;
       }
+      console.log(`[mark] forwardApp discover: discover ${path} -> #/view/${id}${tail || ''}`)
       return `#/view/${id}${tail || ''}`;
     });
 

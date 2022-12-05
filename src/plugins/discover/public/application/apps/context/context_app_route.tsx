@@ -29,6 +29,7 @@ export interface ContextUrlParams {
 }
 
 export function ContextAppRoute(props: ContextAppProps) {
+  console.log(`[mark] ContextAppRoute ${props}`);
   const { services } = props;
   const { chrome } = services;
 
